@@ -1,0 +1,128 @@
+# -*- coding: utf-8 -*-
+#BEGIN_HEADER
+import logging
+import os
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
+from datetime import datetime
+
+from installed_clients.KBaseReportClient import KBaseReport
+#END_HEADER
+
+
+class giannamarsDebmicroTrait:
+    '''
+    Module Name:
+    giannamarsDebmicroTrait
+
+    Module Description:
+    A KBase module: giannamarsDebmicroTrait
+    '''
+
+    ######## WARNING FOR GEVENT USERS ####### noqa
+    # Since asynchronous IO can lead to methods - even the same method -
+    # interrupting each other, you must be *very* careful when using global
+    # state. A method could easily clobber the state set by another while
+    # the latter method is running.
+    ######################################### noqa
+    VERSION = "0.0.1"
+    GIT_URL = "https://github.com/giannamars/giannamarsDebmicroTrait.git"
+    GIT_COMMIT_HASH = "2d9abc84e40f697ba9bbd25a189bebfaabbb3e44"
+
+    #BEGIN_CLASS_HEADER
+    #END_CLASS_HEADER
+
+    # config contains contents of config file in a hash or None if it couldn't
+    # be found
+    def __init__(self, config):
+        #BEGIN_CONSTRUCTOR
+        self.callback_url = os.environ['SDK_CALLBACK_URL']
+        self.shared_folder = config['scratch']
+        logging.basicConfig(format='%(created)s %(levelname)s: %(message)s',
+                            level=logging.INFO)
+        #END_CONSTRUCTOR
+        pass
+
+
+    def run_giannamarsDebmicroTrait(self, ctx, params):
+        """
+        This example function accepts any number of parameters and returns results in a KBaseReport
+        :param params: instance of mapping from String to unspecified object
+        :returns: instance of type "ReportResults" -> structure: parameter
+           "report_name" of String, parameter "report_ref" of String
+        """
+        # ctx is the context object
+        # return variables are: output
+        #BEGIN run_giannamarsDebmicroTrait
+
+        data_path = os.path.abspath('/kb/module/data')
+        df = pd.read_csv(os.path.join(data_path, 'tm1_norm.csv'))
+        
+        # set the output paths
+        timestamp = int((datetime.utcnow() - datetime.utcfromtimestamp(0)).total_seconds() * 1000)
+        output_dir = os.path.join(self.scratch, 'output.' + str(timestamp))
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        html_output_dir = os.path.join(output_dir, 'html_output')
+        if not os.path.exists(html_output_dir):
+            os.makedirs(html_output_dir)
+        
+        features = ['Resource Acquisition:Substrate uptake:aromatic acid transport', 'Resource Acquisition:Substrate uptake:carbohydrate transport', 'Resource Acquisition:Substrate uptake:aromatic acid transport', 'Resource Acquisition:Substrate uptake:free amino acids transport', 'Resource Acquisition:Substrate uptake:lipid transport', 'Resource Acquisition:Substrate uptake:nucleic acid component transport', 'Resource Acquisition:Substrate uptake:secondary metabolite transport', 'Resource Acquisition:Substrate degradation:complex carbohydrate depolymerization', 'Stress Tolerance:General','rrncopies', 'growthrate']
+        x = df.loc[:, features].values
+        y = df.loc[:,['guild_id']].values # Standardizing the features
+        x = StandardScaler().fit_transform(x)
+
+        pca = PCA(n_components=2)
+        principalComponents = pca.fit_transform(x)
+        principalDf = pd.DataFrame(data = principalComponents, columns = ['principal component 1', 'principal component 2'])
+
+        xs = principalComponents[:,0]
+        ys = principalComponents[:,1]
+        scalex = 1.0/(xs.max() - xs.min())
+        scaley = 1.0/(ys.max() - ys.min())
+        df['pc1'] = xs*scalex
+        df['pc2'] = ys*scaley
+
+        values = pca.components_
+        variance_ratio = pca.explained_variance_ratio_*100
+        df_grouped = df.groupby('guild_id').mean()  
+
+        fig = plt.figure()
+        fig.set_size_inches(4, 4)
+        plt.scatter(df['pc1'],df['pc2'], s=20, marker='o', edgecolor='k', alpha=0.3, color='none')
+        png_file = 'tm1_norm.png'
+        output_png_file_path = os.path.join(html_output_dir, png_file)
+
+        fig.savefig(output_png_file_path, dpi=200)
+
+        report = KBaseReport(self.callback_url)
+        report_info = report.create({'report': {'objects_created':[],
+                                                'text_message': params['parameter_1']},
+                                                'workspace_name': params['workspace_name']})
+        output = {
+            'report_name': report_info['name'],
+            'report_ref': report_info['ref'],
+        }
+        #END run_giannamarsDebmicroTrait
+
+        # At some point might do deeper type checking...
+        if not isinstance(output, dict):
+            raise ValueError('Method run_giannamarsDebmicroTrait return value ' +
+                             'output is not type dict as required.')
+        # return the results
+        return [output]
+    def status(self, ctx):
+        #BEGIN_STATUS
+        returnVal = {'state': "OK",
+                     'message': "",
+                     'version': self.VERSION,
+                     'git_url': self.GIT_URL,
+                     'git_commit_hash': self.GIT_COMMIT_HASH}
+        #END_STATUS
+        return [returnVal]
