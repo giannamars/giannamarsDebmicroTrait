@@ -120,7 +120,7 @@ class giannamarsDebmicroTrait:
         html_report_lines = []
         html_report_lines += ['<html>']
         html_report_lines += ['<head><title>KBase Tree: ' + 'intree_name' + '</title></head>']
-        html_report_lines += ['<body bgcolor="white">']
+        html_report_lines += ['<body bgcolor="black">']
         #html_report_lines += ['<img width=' + str(img_html_width) + ' src="' + png_file + '">']
         html_report_lines += ['</body>']
         html_report_lines += ['</html>']
