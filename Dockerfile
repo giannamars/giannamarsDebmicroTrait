@@ -9,7 +9,10 @@ MAINTAINER KBase Developer
 # RUN apt-get update
 
 RUN pip install --upgrade pip
-RUN pip install matplotlib
+RUN pip install matplotlib \
+    && pip install pandas \
+    && pip install seaborn \
+    && pip install scikit-learn
 
 #RUN pip install --upgrade pip && \
 #    pip install -U scikit-learn matplotlib pandas seaborn
