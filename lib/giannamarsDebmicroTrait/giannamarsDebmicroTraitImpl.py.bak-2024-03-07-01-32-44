@@ -37,7 +37,7 @@ class giannamarsDebmicroTrait:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/giannamars/giannamarsDebmicroTrait.git"
-    GIT_COMMIT_HASH = "7abf83f1593a015467fa2363a58ea9cf92129b63"
+    GIT_COMMIT_HASH = "2d9abc84e40f697ba9bbd25a189bebfaabbb3e44"
 
     #BEGIN_CLASS_HEADER
     def now_ISO(self):
