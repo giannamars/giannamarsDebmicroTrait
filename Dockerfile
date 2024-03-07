@@ -14,8 +14,13 @@ RUN pip install matplotlib \
     && pip install seaborn \
     && pip install scikit-learn
 
-#RUN pip install --upgrade pip && \
-#    pip install -U scikit-learn matplotlib pandas seaborn
+RUN curl --location https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.7-linux-x86_64.tar.gz  > julia-1.6.7-linux-x86_64.tar.gz && \
+    tar zxvf julia-1.6.7-linux-x86_64.tar.gz && \
+    rm -rf julia-1.6.7-linux-x86_64.tar.gz && \
+    cp -r julia-1.6.7 /usr/local/bin/ && \
+    ln -s /usr/local/bin/julia-1.6.7/bin/julia /usr/local/bin/julia
+
+RUN julia -e 'using Pkg; Pkg.add.(["OrdinaryDiffEq", "CSV", "DataFrames", "LinearAlgebra", "Roots", "JLD", "Statistics"])'
 
 
 # -----------------------------------------
