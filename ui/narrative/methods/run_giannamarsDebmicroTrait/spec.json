@@ -20,6 +20,32 @@
             "text_options": {
                 "valid_ws_types": [ ]
             }
+        },
+        {
+            "id": "simulation_type",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [
+                "batch"
+            ],
+            "field_type": "dropdown",
+            "dropdown_options": {
+                "options": [
+                    {
+                        "value": "batch",
+                        "display": "batch",
+                        "id": "batch",
+                        "ui-name": "batch - default simulation type"
+                    },
+                    {
+                        "value": "mixed_media",
+                        "display": "mixed media",
+                        "id": "mixed_media",
+                        "ui-name": "mixed_media - mixed media"
+                    }
+                ]
+            }
         }
     ],
     "behavior": {
