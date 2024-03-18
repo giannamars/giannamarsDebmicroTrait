@@ -154,19 +154,28 @@ class giannamarsDebmicroTrait:
         html_report_lines.append('.active {')
         html_report_lines.append('  display: block;')
         html_report_lines.append('}')
+        html_report_lines.append('.tab-button {')  # Added class for tab buttons
+        html_report_lines.append('  background-color: white;')  # Set background color to white
+        html_report_lines.append('}')
         html_report_lines.append('</style>')
         html_report_lines.append('</head>')
         html_report_lines.append('<body>')
 
         # Tab navigation
         html_report_lines.append('<div>')
-        html_report_lines.append('<button onclick="showTab(0)">Image</button>')
+        html_report_lines.append('<button onclick="showTab(0)">Image 1</button>')
+        html_report_lines.append('<button onclick="showTab(0)">Image 2</button>')
         html_report_lines.append('<button onclick="showTab(1)">Background</button>')
         html_report_lines.append('</div>')
 
         # Tab content
         html_report_lines.append('<div id="tabContent">')
         html_report_lines.append('<div class="tab active">')
+        html_report_lines.append('<div><h2>Image 1</h2></div>')  # Header for Image 1
+        html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, png_file))
+        html_report_lines.append('</div>')
+        html_report_lines.append('<div class="tab">')
+        html_report_lines.append('<div><h2>Image 2</h2></div>')  # Header for Image 1
         html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, png_file))
         html_report_lines.append('</div>')
         html_report_lines.append('<div class="tab">')
