@@ -108,7 +108,7 @@ class giannamarsDebmicroTrait:
         img_dpi = 300
         img_units = "in"
         img_pix_width = 1200
-        img_in_width = round(float(img_pix_width) / float(imgdpi), 1)
+        img_in_width = round(float(img_pix_width) / float(img_dpi), 1)
         img_html_width = img_pix_width // 2
 
 
@@ -142,7 +142,7 @@ class giannamarsDebmicroTrait:
 
         # Make HTML
         intree_name = 'intreename'
-        
+
         html_report_lines = []
         html_report_lines.append('<html>')
         html_report_lines.append('<head>')
