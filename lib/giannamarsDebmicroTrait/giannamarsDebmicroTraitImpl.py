@@ -5,7 +5,7 @@ import os
 import sys
 import uuid
 
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as pyplot
 #import seaborn as sns
 #import pandas as pd
 #import numpy as np
@@ -104,24 +104,36 @@ class giannamarsDebmicroTrait:
         except Exception as e:
             raise ValueError("unable to instantiate dfuClient. "+str(e))
         
+
+        img_dpi = 300
+        img_units = "in"
+        img_pix_width = 1200
+        img_in_width = round(float(img_pix_width) / float(dpi), 1)
+        img_html_width = img_pix_width // 2
+
+
+        fig = pyplot.figure()
+        fig.set_size_inches(img_in_width, img_in_width)
+        fig, ax = pyplot.subplots(nrows=1, ncols=1)  
+        ax.plot([0,1,2], [10,20,3])
+       
+        
         html_output_dir = os.path.join(output_dir, 'output_html.' + str(timestamp))
         if not os.path.exists(html_output_dir):
             os.makedirs(html_output_dir)
         html_file = 'test' + '.html'
         output_html_file_path = os.path.join(html_output_dir, html_file)
 
-        dpi = 300
-        img_units = "in"
-        img_pix_width = 1200
-        img_in_width = round(float(img_pix_width) / float(dpi), 1)
-        img_html_width = img_pix_width // 2
+        png_file = 'pangenome_circle.png'
+        output_png_file_path = os.path.join(html_output_dir, png_file)
+        fig.savefig(output_png_file_path, dpi=img_dpi)
 
         # make html
         html_report_lines = []
         html_report_lines += ['<html>']
         html_report_lines += ['<head><title>KBase Tree: ' + 'intree_name' + '</title></head>']
         html_report_lines += ['<body bgcolor="black">']
-        #html_report_lines += ['<img width=' + str(img_html_width) + ' src="' + png_file + '">']
+        html_report_lines += ['<img width=' + str(img_html_width) + ' src="' + png_file + '">']
         html_report_lines += ['</body>']
         html_report_lines += ['</html>']
 
@@ -136,8 +148,15 @@ class giannamarsDebmicroTrait:
                                                  'pack': 'zip'})
         except:
             raise ValueError('error uploading html file to shock')
+        
+        try:
+            png_upload_ret = dfuClient.file_to_shock({'file_path': output_png_file_path,
+                                                 'make_handle': 0})
+        except:
+            raise ValueError('error uploading png file to shock')
 
         reportName = 'view_tree_report_' + str(uuid.uuid4())
+
         reportObj = {'objects_created': [],
                      'direct_html_link_index': 0,
                      'file_links': [],
@@ -149,6 +168,12 @@ class giannamarsDebmicroTrait:
         reportObj['html_links'] = [{'shock_id': html_upload_ret['shock_id'],
                                     'name': html_file,
                                     'label': 'test' + ' HTML'
+                                    }
+                                   ]
+        
+        reportObj['file_links'] = [{'shock_id': png_upload_ret['shock_id'],
+                                    'name': 'pan_circle_plot.png',
+                                    'label': 'test plot'
                                     }
                                    ]
         
