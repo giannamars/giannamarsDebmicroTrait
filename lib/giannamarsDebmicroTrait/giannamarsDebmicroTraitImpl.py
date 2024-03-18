@@ -108,7 +108,7 @@ class giannamarsDebmicroTrait:
         img_dpi = 300
         img_units = "in"
         img_pix_width = 1200
-        img_in_width = round(float(img_pix_width) / float(img_dpi), 1)
+        img_in_width = round(float(img_pix_width) / float(imgdpi), 1)
         img_html_width = img_pix_width // 2
 
 
@@ -136,6 +136,57 @@ class giannamarsDebmicroTrait:
         html_report_lines += ['<img width=' + str(img_html_width) + ' src="' + png_file + '">']
         html_report_lines += ['</body>']
         html_report_lines += ['</html>']
+
+        html_report_str = "\n".join(html_report_lines)
+
+
+        # Make HTML
+        intree_name = 'intreename'
+        
+        html_report_lines = []
+        html_report_lines.append('<html>')
+        html_report_lines.append('<head>')
+        html_report_lines.append('<title>KBase Tree: {0}</title>'.format(intree_name))
+        html_report_lines.append('<style>')
+        html_report_lines.append('.tab {')
+        html_report_lines.append('  display: none;')
+        html_report_lines.append('}')
+        html_report_lines.append('.active {')
+        html_report_lines.append('  display: block;')
+        html_report_lines.append('}')
+        html_report_lines.append('</style>')
+        html_report_lines.append('</head>')
+        html_report_lines.append('<body>')
+
+        # Tab navigation
+        html_report_lines.append('<div>')
+        html_report_lines.append('<button onclick="showTab(0)">Image</button>')
+        html_report_lines.append('<button onclick="showTab(1)">Background</button>')
+        html_report_lines.append('</div>')
+
+        # Tab content
+        html_report_lines.append('<div id="tabContent">')
+        html_report_lines.append('<div class="tab active">')
+        html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, png_file))
+        html_report_lines.append('</div>')
+        html_report_lines.append('<div class="tab">')
+        html_report_lines.append('<div style="width: 100%; height: 100vh; background-color: black;"></div>')
+        html_report_lines.append('</div>')
+        html_report_lines.append('</div>')
+
+        # JavaScript for tab switching
+        html_report_lines.append('<script>')
+        html_report_lines.append('function showTab(index) {')
+        html_report_lines.append('  var tabs = document.getElementsByClassName("tab");')
+        html_report_lines.append('  for (var i = 0; i < tabs.length; i++) {')
+        html_report_lines.append('    tabs[i].classList.remove("active");')
+        html_report_lines.append('  }')
+        html_report_lines.append('  tabs[index].classList.add("active");')
+        html_report_lines.append('}')
+        html_report_lines.append('</script>')
+
+        html_report_lines.append('</body>')
+        html_report_lines.append('</html>')
 
         html_report_str = "\n".join(html_report_lines)
         
