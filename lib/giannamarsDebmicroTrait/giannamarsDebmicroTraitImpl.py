@@ -8,7 +8,7 @@ import uuid
 import matplotlib.pyplot as pyplot
 #import seaborn as sns
 #import pandas as pd
-#import numpy as np
+import numpy as np
 #from sklearn.preprocessing import StandardScaler
 #from sklearn.decomposition import PCA
 
@@ -128,16 +128,9 @@ class giannamarsDebmicroTrait:
         output_png_file_path = os.path.join(html_output_dir, png_file)
         fig.savefig(output_png_file_path, dpi=img_dpi)
 
-        # make html
-        html_report_lines = []
-        html_report_lines += ['<html>']
-        html_report_lines += ['<head><title>KBase Tree: ' + 'intree_name' + '</title></head>']
-        html_report_lines += ['<body bgcolor="black">']
-        html_report_lines += ['<img width=' + str(img_html_width) + ' src="' + png_file + '">']
-        html_report_lines += ['</body>']
-        html_report_lines += ['</html>']
-
-        html_report_str = "\n".join(html_report_lines)
+        # Sample data generation
+        data_array = np.random.rand(3, 39)
+        headers = ['Header ' + str(i) for i in range(1, 40)]  # Sample headers
 
 
         # Make HTML
@@ -185,18 +178,18 @@ class giannamarsDebmicroTrait:
         html_report_lines.append('</div>')
         html_report_lines.append('<div class="tab">')
         html_report_lines.append('<div><h2>Table</h2></div>')  # Header for the table tab
-      # Table content
+        # Table content
         html_report_lines.append('<table border="1">')  # Basic table with borders
         # Table header row
         html_report_lines.append('<tr>')
-        for i in range(1, 40):  # 39 columns
-            html_report_lines.append('<th>Column {0}</th>'.format(i))
+        for header in headers:
+            html_report_lines.append('<th>{}</th>'.format(header))
         html_report_lines.append('</tr>')
-        # Two rows of data
-        for j in range(2):  # Two rows
+        # Data rows
+        for row in data_array:
             html_report_lines.append('<tr>')
-            for i in range(1, 40):  # 39 columns
-                html_report_lines.append('<td>Data {0}</td>'.format((i * 2) + j))  # Generate sample data
+            for cell in row:
+                html_report_lines.append('<td>{}</td>'.format(cell))
             html_report_lines.append('</tr>')
         html_report_lines.append('</table>')
         html_report_lines.append('</div>')
