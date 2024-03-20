@@ -22,6 +22,26 @@
             }
         },
         {
+            "id": "obj_refs",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": true,
+            "default_values": [
+                ""
+            ],
+            "field_type": "text",
+            "text_options": {
+                "valid_ws_types": [
+                    "KBaseMetagenomes.BinnedContigs",
+                    "KBaseSets.GenomeSet",
+                    "KBaseSearch.GenomeSet",
+                    "KBaseGenomes.Genome",
+                    "KBaseSets.AssemblySet",
+                    "KBaseGenomeAnnotations.Assembly"
+                ]
+            }
+        },
+        {
             "id": "simulation_type",
             "optional": false,
             "advanced": false,

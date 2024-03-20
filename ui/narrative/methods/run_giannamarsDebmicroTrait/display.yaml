@@ -31,6 +31,11 @@ parameters :
             The first parameter
         long-hint  : |
             The first parameter that needs to be entered to drive the method. This might be the first of many.
+    obj_refs :
+       ui-name : |
+           BinnedContigs, Assemblies, or Genomes
+       short-hint : |
+           BinnedContigs, AssemblySet, Assembly, GenomeSet, Genome objects
     simulation_type :
         ui-name : |
             simulation_type
