@@ -179,6 +179,7 @@ class giannamarsDebmicroTrait:
         html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, png_file))
         html_report_lines.append('</div>')
         html_report_lines.append('<div class="tab">')
+        html_report_lines.append('<div><h2>Background</h2></div>') 
         html_report_lines.append('<div style="width: 100%; height: 100vh; background-color: black;"></div>')
         html_report_lines.append('</div>')
         html_report_lines.append('<div class="tab">')
