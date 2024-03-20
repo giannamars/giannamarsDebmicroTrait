@@ -120,7 +120,7 @@ class giannamarsDebmicroTrait:
         
         png_file = 'pangenome_circle.png'
         output_png_file_path = os.path.join(html_output_dir, png_file)
-        fig.savefig(output_png_file_path, dpi=img_dpi)
+        fig.savefig(output_png_file_path, dpi=200)
 
         # Sample data generation
         data_array = np.random.rand(3, 39)
