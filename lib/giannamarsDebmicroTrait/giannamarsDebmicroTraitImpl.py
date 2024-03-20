@@ -153,7 +153,7 @@ class giannamarsDebmicroTrait:
                      }
         
         reportObj['html_links'] = [{'shock_id': html_upload_ret['shock_id'],
-                                    'name': html_file,
+                                    'name': html_report['name'],
                                     'label': 'test' + ' HTML'
                                     }
                                    ]
