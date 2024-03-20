@@ -105,6 +105,11 @@ class giannamarsDebmicroTrait:
         except Exception as e:
             raise ValueError("unable to instantiate dfuClient. "+str(e))
         
+
+        html_output_dir = os.path.join(output_dir, 'output_html.' + str(timestamp))
+        if not os.path.exists(html_output_dir):
+            os.makedirs(html_output_dir)
+        
         # Make dummy plot
         fig = pyplot.figure()
         fig.set_size_inches(1, 1)
@@ -125,9 +130,6 @@ class giannamarsDebmicroTrait:
             "data": data_array
         }
 
-        html_output_dir = os.path.join(output_dir, 'output_html.' + str(timestamp))
-        if not os.path.exists(html_output_dir):
-            os.makedirs(html_output_dir)
 
         html_report = h.html_add_batch_summary(params, api_results, html_output_dir)
 
