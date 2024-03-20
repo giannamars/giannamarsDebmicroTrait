@@ -30,21 +30,41 @@ parameters :
        short-hint : |
            Media specifies the set of chemical compounds an organism can use for its growth. 
 
-    length :
+    Substrate_uptake:aromatic_acid_transport :
         ui-name : |
-           Minimum genome length
+           Substrate uptake:aromatic acid transport
         short-hint : |
-           Minimum genome length
-    completeness :
+           Substrate uptake:aromatic acid transport
+    Substrate_uptake:carbohydrate_transport :
         ui-name : |
-           Minimum genome completeness
+           Substrate uptake:carbohydrate transport
         short-hint : |
-           Minimum genome completeness
-    contamination :
+           Substrate uptake:carbohydrate transport
+    Substrate_uptake:free_amino_acids_transport :
         ui-name : |
-           Maximum genome contamination
+           Substrate uptake:free amino acids transport
         short-hint : |
-           Maximum genome contamination
+           Substrate uptake:free amino acids transport
+    Substrate_uptake:lipid_transport :
+        ui-name : |
+           Substrate uptake:lipid transport
+        short-hint : |
+           Substrate uptake:lipid transport
+    Substrate uptake:nucleic acid component transport :
+        ui-name : |
+           Substrate uptake:nucleic acid component transport
+        short-hint : |
+           Substrate uptake:nucleic acid component transport
+    Substrate_uptake:secondary_metabolite_transport :
+        ui-name : |
+           Substrate uptake:secondary metabolite transport
+        short-hint : |
+           Substrate uptake:secondary metabolite transport
+    Substrate_degradation:complex_carbohydrate_depolymerization :
+        ui-name : |
+           Substrate degradation:complex carbohydrate depolymerization
+        short-hint : |
+           Substrate degradation:complex carbohydrate depolymerization
 
     simulation_type :
         ui-name : |
@@ -69,9 +89,9 @@ parameters :
             simulation_type 
 
 parameter-groups:
-    trait_selection:
+    acquisition_traits:
         ui-name: |
-            FILTERING OPTIONS
+            Resource Acquisition
         short-hint: |
 
 description : |

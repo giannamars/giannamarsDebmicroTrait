@@ -11,11 +11,15 @@
     },
     "parameter-groups": [
         {
-            "id": "trait_selection",
+            "id": "acquisition_traits",
             "parameters": [
-                "length",
-                "completeness",
-                "contamination"
+                "Substrate_uptake:aromatic_acid_transport",
+                "Substrate_uptake:carbohydrate_transport",
+                "Substrate_uptake:free_amino_acids_transport",
+                "Substrate_uptake:lipid_transport",
+                "Substrate_uptake:nucleic_acid_component_transport",
+                "Substrate_uptake:secondary_metabolite_transport",
+                "Substrate_degradation:complex_carbohydrate_depolymerization"
             ],
             "optional": false,
             "advanced": false,
@@ -23,7 +27,92 @@
             "with_border": true
         }
     ],
-    "parameters": [ 
+    "parameters": [
+        {
+            "id": "Substrate_uptake:aromatic_acid_transport",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
+            }
+        },
+        {
+            "id": "Substrate_uptake:carbohydrate_transport",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
+            }
+        },
+        {
+            "id": "Substrate_uptake:free_amino_acids_transport",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
+            }
+        },
+        {
+            "id": "Substrate_uptake:lipid_transport",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
+            }
+        },
+        {
+            "id": "Substrate_uptake:nucleic_acid_component_transport",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
+            }
+        },
+        {
+            "id": "Substrate_uptake:secondary_metabolite_transport",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
+            }
+        },
+        {
+            "id": "Substrate_degradation:complex_carbohydrate_depolymerization",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
+            }
+        },
+
         {
             "id": "media_refs",
             "optional": true,
@@ -38,50 +127,6 @@
                     "KBaseBiochem.Media",
                     "KBaseMatrices.ChemicalAbundanceMatrix"
                 ]
-            }
-        },
-        {
-            "id": "length",
-            "optional": false,
-            "advanced": true,
-            "allow_multiple": false,
-            "default_values": [
-                "50000"
-            ],
-            "field_type": "text",
-            "text_options": {
-                "validate_as": "int",
-                "min_int": "0"
-            }
-        },
-        {
-            "id": "completeness",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [
-                "75"
-            ],
-            "field_type": "text",
-            "text_options": {
-                "validate_as": "float",
-                "min_float": "0",
-                "max_float": "100"
-            }
-        },
-        {
-            "id": "contamination",
-            "optional": false,
-            "advanced": true,
-            "allow_multiple": false,
-            "default_values": [
-                "25"
-            ],
-            "field_type": "text",
-            "text_options": {
-                "validate_as": "float",
-                "min_float": "0",
-                "max_float": "100"
             }
         },
         {
