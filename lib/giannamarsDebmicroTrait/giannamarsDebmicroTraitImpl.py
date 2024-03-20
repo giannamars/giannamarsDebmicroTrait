@@ -185,22 +185,18 @@ class giannamarsDebmicroTrait:
         html_report_lines.append('</div>')
         html_report_lines.append('<div class="tab">')
         html_report_lines.append('<div><h2>Table</h2></div>')  # Header for the table tab
-        # Table content
+      # Table content
         html_report_lines.append('<table border="1">')  # Basic table with borders
         # Table header row
         html_report_lines.append('<tr>')
-        html_report_lines.append('<th>Column 1</th>')
-        html_report_lines.append('<th>Column 2</th>')
-        html_report_lines.append('<th>Column 3</th>')
-        html_report_lines.append('<th>Column 4</th>')
+        for i in range(1, 40):  # 39 columns
+            html_report_lines.append('<th>Column {0}</th>'.format(i))
         html_report_lines.append('</tr>')
-        # Table rows
-        for i in range(39):  # 39 rows
+        # Two rows of data
+        for j in range(2):  # Two rows
             html_report_lines.append('<tr>')
-            html_report_lines.append('<td>Data</td>')
-            html_report_lines.append('<td>Data</td>')
-            html_report_lines.append('<td>Data</td>')
-            html_report_lines.append('<td>Data</td>')
+            for i in range(1, 40):  # 39 columns
+                html_report_lines.append('<td>Data {0}</td>'.format((i * 2) + j))  # Generate sample data
             html_report_lines.append('</tr>')
         html_report_lines.append('</table>')
         html_report_lines.append('</div>')
