@@ -30,6 +30,14 @@ parameters :
        short-hint : |
            Media specifies the set of chemical compounds an organism can use for its growth. 
 
+    media_concentration :
+        ui-name : |
+            Media Concentration
+        short-hint : |
+            DEBmicroTrait Simulation Type
+        long-hint  : |
+            simulation_type 
+            
     Substrate_uptake:aromatic_acid_transport :
         ui-name : |
            Substrate uptake:aromatic acid transport
@@ -73,14 +81,6 @@ parameters :
             DEBmicroTrait Simulation Type
         long-hint  : |
             simulation_type
-
-    media_concentration :
-        ui-name : |
-            Media Concentration
-        short-hint : |
-            DEBmicroTrait Simulation Type
-        long-hint  : |
-            simulation_type 
 
 parameter-groups:
     acquisition_traits:
