@@ -105,28 +105,31 @@ class giannamarsDebmicroTrait:
         except Exception as e:
             raise ValueError("unable to instantiate dfuClient. "+str(e))
         
-
+        # Make dummy plot
         fig = pyplot.figure()
         fig.set_size_inches(1, 1)
         fig, ax = pyplot.subplots(nrows=1, ncols=1)  
         ax.plot([0,1,2], [10,20,3])
-       
-        
-        html_output_dir = os.path.join(output_dir, 'output_html.' + str(timestamp))
-        if not os.path.exists(html_output_dir):
-            os.makedirs(html_output_dir)
-        
+
         png_file = 'pangenome_circle.png'
         output_png_file_path = os.path.join(html_output_dir, png_file)
         fig.savefig(output_png_file_path, dpi=200)
-
-        # Sample data generation
+       
+        # Generate dummy table data 
         data_array = np.random.rand(3, 39)
         headers = ['Header ' + str(i) for i in range(1, 40)]  # Sample headers
 
+        api_results = {
+            "png1": png_file,
+            "header": headers,
+            "data": data_array
+        }
 
+        html_output_dir = os.path.join(output_dir, 'output_html.' + str(timestamp))
+        if not os.path.exists(html_output_dir):
+            os.makedirs(html_output_dir)
 
-        html_report = h.html_add_batch_summary(params, png_file, html_output_dir)
+        html_report = h.html_add_batch_summary(params, api_results, html_output_dir)
 
         try:
             html_upload_ret = dfuClient.file_to_shock({'file_path': html_report['path'],
