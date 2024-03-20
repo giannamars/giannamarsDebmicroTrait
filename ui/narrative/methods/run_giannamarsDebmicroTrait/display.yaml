@@ -1,10 +1,10 @@
 #
 # define display information
 #
-name: Method Name Here
+name: DEBmicroTrait - v1.0.0
 
 tooltip: |
-    Perform some kind of method
+    Run dynamic energy budget (DEB) model simulations for select traits in a TraitMatrix
 
 screenshots: []
 
@@ -30,6 +30,21 @@ parameters :
        short-hint : |
            Media specifies the set of chemical compounds an organism can use for its growth. 
 
+    length :
+        ui-name : |
+           Minimum genome length
+        short-hint : |
+           Minimum genome length
+    completeness :
+        ui-name : |
+           Minimum genome completeness
+        short-hint : |
+           Minimum genome completeness
+    contamination :
+        ui-name : |
+           Maximum genome contamination
+        short-hint : |
+           Maximum genome contamination
 
     simulation_type :
         ui-name : |
@@ -52,6 +67,12 @@ parameters :
             DEBmicroTrait Simulation Type
         long-hint  : |
             simulation_type 
+
+parameter-groups:
+    trait_selection:
+        ui-name: |
+            FILTERING OPTIONS
+        short-hint: |
 
 description : |
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar efficitur felis, quis tincidunt sem congue at. Vivamus ornare feugiat faucibus. Fusce tincidunt mattis nunc, nec varius purus convallis quis. Nulla facilisi. In at magna dolor. Suspendisse sit amet felis at arcu auctor dapibus vitae pharetra dui. Nam semper mi quis tortor fermentum mollis. Donec a arcu pharetra, rutrum dolor vitae, rutrum mauris. Donec ornare fringilla sagittis. Nam laoreet est in elementum malesuada. Vestibulum id mi eget urna hendrerit feugiat. Donec et ultrices nulla. Phasellus diam eros, dapibus at tempus nec, semper vel ante.</p>
