@@ -11,7 +11,7 @@ import matplotlib.pyplot as pyplot
 import numpy as np
 #from sklearn.preprocessing import StandardScaler
 #from sklearn.decomposition import PCA
-import giannamarsDebmciroTrait.utils.helpers as h
+import giannamarsDebmicroTrait.utils.helpers as h
 
 from datetime import datetime
 
