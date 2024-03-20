@@ -1,12 +1,5 @@
 import os
 
-def html_header():
-    report = []
-    report.append("<style>* {font-family: sans-serif; font-size: 14px}</style>")
-
-    return report
-
-
 def html_add_batch_summary(params, api_results, html_output_dir):
 
     html_file = 'test' + '.html'
@@ -46,8 +39,8 @@ def html_add_batch_summary(params, api_results, html_output_dir):
 
     # Tab navigation
     html_report_lines.append('<div>')
-    html_report_lines.append('<button class="tab-button" onclick="showTab(0)">Thermodynamic Trait</button>')  # Added class for tab buttons
-    html_report_lines.append('<button class="tab-button" onclick="showTab(1)">Uptake Kinetic Traits</button>')  # Added class for tab buttons
+    html_report_lines.append('<button class="tab-button" onclick="showTab(0)">Substrate Thermodynamic Traits</button>')  # Added class for tab buttons
+    html_report_lines.append('<button class="tab-button" onclick="showTab(1)">Substrate Kinetic Traits</button>')  # Added class for tab buttons
     html_report_lines.append('<button class="tab-button" onclick="showTab(2)">Phenotypic Traits</button>')  # Added class for tab buttons
     html_report_lines.append('<button class="tab-button" onclick="showTab(3)">Table</button>') 
     html_report_lines.append('</div>')
@@ -57,9 +50,6 @@ def html_add_batch_summary(params, api_results, html_output_dir):
     html_report_lines.append('<div class="tab active">')
     html_report_lines.append('<div><h2>Image 1</h2></div>')  # Header for Image 1
     html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, api_results["png1"]))
-    html_report_lines.append('</div>')
-    html_report_lines.append('<div>')
-    html_report_lines.append('<p>This is a line of text below.</p>')
     html_report_lines.append('</div>')
     html_report_lines.append('<div class="tab">')
     html_report_lines.append('<div><h2>Image 2</h2></div>')  # Header for Image 1
