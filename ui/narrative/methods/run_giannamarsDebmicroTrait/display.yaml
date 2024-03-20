@@ -37,7 +37,7 @@ parameters :
             DEBmicroTrait Simulation Type
         long-hint  : |
             simulation_type 
-            
+
     Substrate_uptake:aromatic_acid_transport :
         ui-name : |
            Substrate uptake:aromatic acid transport
@@ -81,6 +81,13 @@ parameters :
             DEBmicroTrait Simulation Type
         long-hint  : |
             simulation_type
+
+    output_name :
+          ui-name: |
+              Output name
+          short-hint: |
+              Output name(s) prefix. Will be appended with '_html', etc.
+
 
 parameter-groups:
     acquisition_traits:

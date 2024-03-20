@@ -175,7 +175,18 @@
             "allow_multiple": true,
             "default_values": [ "1.25" ],
             "field_type": "text"
-        }
+        },
+        {
+            "id": "output_name",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "dRep" ],
+            "field_type": "text",
+            "text_options": {
+                "is_output_name": true
+            }
+        } 
 
     ],
     "behavior": {
@@ -201,6 +212,9 @@
                 },{
                     "input_parameter": "media_concentration",
                     "target_property": "media_concentration"
+                },{
+                    "input_parameter": "output_name",
+                    "target_property": "output_name"
                 }
             ],
             "output_mapping": [
