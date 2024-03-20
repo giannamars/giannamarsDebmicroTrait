@@ -166,6 +166,7 @@ class giannamarsDebmicroTrait:
         html_report_lines.append('<button class="tab-button" onclick="showTab(0)">Image 1</button>')  # Added class for tab buttons
         html_report_lines.append('<button class="tab-button" onclick="showTab(1)">Image 2</button>')  # Added class for tab buttons
         html_report_lines.append('<button class="tab-button" onclick="showTab(2)">Background</button>')  # Added class for tab buttons
+        html_report_lines.append('<button class="tab-button" onclick="showTab(3)">Table</button>') 
         html_report_lines.append('</div>')
 
         # Tab content
