@@ -46,9 +46,9 @@ def html_add_batch_summary(params, api_results, html_output_dir):
 
     # Tab navigation
     html_report_lines.append('<div>')
-    html_report_lines.append('<button class="tab-button" onclick="showTab(0)">Substrate Thermodynamics</button>')  # Added class for tab buttons
-    html_report_lines.append('<button class="tab-button" onclick="showTab(1)">Substrate Uptake Kinetics</button>')  # Added class for tab buttons
-    html_report_lines.append('<button class="tab-button" onclick="showTab(2)">Background</button>')  # Added class for tab buttons
+    html_report_lines.append('<button class="tab-button" onclick="showTab(0)">Thermodynamic Trait</button>')  # Added class for tab buttons
+    html_report_lines.append('<button class="tab-button" onclick="showTab(1)">Uptake Kinetic Traits</button>')  # Added class for tab buttons
+    html_report_lines.append('<button class="tab-button" onclick="showTab(2)">Phenotypic Traits</button>')  # Added class for tab buttons
     html_report_lines.append('<button class="tab-button" onclick="showTab(3)">Table</button>') 
     html_report_lines.append('</div>')
 
