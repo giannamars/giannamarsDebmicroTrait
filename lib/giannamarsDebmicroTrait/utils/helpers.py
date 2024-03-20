@@ -34,6 +34,11 @@ def html_add_batch_summary(params, api_results, html_output_dir):
     html_report_lines.append('}')
     html_report_lines.append('.tab-button {')  # Added class for tab buttons
     html_report_lines.append('  background-color: white;')  # Set background color to white
+    html_report_lines.append('  padding: 10px 20px;')  # Adjust padding to increase button size
+    html_report_lines.append('  font-size: 16px;')  # Adjust font size
+    html_report_lines.append('  border: 1px solid #ccc;')  # Add border for button
+    html_report_lines.append('  border-radius: 5px;')  # Add border radius for button
+    html_report_lines.append('  cursor: pointer;')
     html_report_lines.append('}')
     html_report_lines.append('</style>')
     html_report_lines.append('</head>')
@@ -41,8 +46,8 @@ def html_add_batch_summary(params, api_results, html_output_dir):
 
     # Tab navigation
     html_report_lines.append('<div>')
-    html_report_lines.append('<button class="tab-button" onclick="showTab(0)">Image 1</button>')  # Added class for tab buttons
-    html_report_lines.append('<button class="tab-button" onclick="showTab(1)">Image 2</button>')  # Added class for tab buttons
+    html_report_lines.append('<button class="tab-button" onclick="showTab(0)">Substrate Thermodynamics</button>')  # Added class for tab buttons
+    html_report_lines.append('<button class="tab-button" onclick="showTab(1)">Substrate Uptake Kinetics</button>')  # Added class for tab buttons
     html_report_lines.append('<button class="tab-button" onclick="showTab(2)">Background</button>')  # Added class for tab buttons
     html_report_lines.append('<button class="tab-button" onclick="showTab(3)">Table</button>') 
     html_report_lines.append('</div>')
