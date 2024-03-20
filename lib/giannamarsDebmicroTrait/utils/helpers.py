@@ -58,6 +58,9 @@ def html_add_batch_summary(params, api_results, html_output_dir):
     html_report_lines.append('<div><h2>Image 1</h2></div>')  # Header for Image 1
     html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, api_results["png1"]))
     html_report_lines.append('</div>')
+    html_report_lines.append('<div>')
+    html_report_lines.append('<p>This is a line of text below.</p>')
+    html_report_lines.append('</div>')
     html_report_lines.append('<div class="tab">')
     html_report_lines.append('<div><h2>Image 2</h2></div>')  # Header for Image 1
     html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, api_results["png1"]))
@@ -85,11 +88,7 @@ def html_add_batch_summary(params, api_results, html_output_dir):
     html_report_lines.append('</table>')
     html_report_lines.append('</div>')
     html_report_lines.append('</div>')
-
-    # Text below the table
-    html_report_lines.append('<div>')
-    html_report_lines.append('<p>This is a line of text below the table.</p>')
-    html_report_lines.append('</div>')
+ 
 
     # JavaScript for tab switching
     html_report_lines.append('<script>')
