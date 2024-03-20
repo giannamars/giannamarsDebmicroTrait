@@ -181,6 +181,27 @@ class giannamarsDebmicroTrait:
         html_report_lines.append('<div class="tab">')
         html_report_lines.append('<div style="width: 100%; height: 100vh; background-color: black;"></div>')
         html_report_lines.append('</div>')
+        html_report_lines.append('<div class="tab">')
+        html_report_lines.append('<div><h2>Table</h2></div>')  # Header for the table tab
+        # Table content
+        html_report_lines.append('<table border="1">')  # Basic table with borders
+        # Table header row
+        html_report_lines.append('<tr>')
+        html_report_lines.append('<th>Column 1</th>')
+        html_report_lines.append('<th>Column 2</th>')
+        html_report_lines.append('<th>Column 3</th>')
+        html_report_lines.append('<th>Column 4</th>')
+        html_report_lines.append('</tr>')
+        # Table rows
+        for i in range(39):  # 39 rows
+            html_report_lines.append('<tr>')
+            html_report_lines.append('<td>Data</td>')
+            html_report_lines.append('<td>Data</td>')
+            html_report_lines.append('<td>Data</td>')
+            html_report_lines.append('<td>Data</td>')
+            html_report_lines.append('</tr>')
+        html_report_lines.append('</table>')
+        html_report_lines.append('</div>')
         html_report_lines.append('</div>')
 
         # JavaScript for tab switching
