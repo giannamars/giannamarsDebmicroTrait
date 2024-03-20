@@ -33,14 +33,14 @@ parameters :
             The first parameter that needs to be entered to drive the method. This might be the first of many.
     obj_refs :
        ui-name : |
-           BinnedContigs, Assemblies, or Genomes
+           Media, or ChemicalAbundanceMatrix
        short-hint : |
-           BinnedContigs, AssemblySet, Assembly, GenomeSet, Genome objects
+           Specific Growth Media, or Chemical Abundance Matrix
     simulation_type :
         ui-name : |
-            simulation_type
+            Simulation Type
         short-hint : |
-            simulation_type
+            DEBmicroTrait Simulation Type
         long-hint  : |
             simulation_type
 

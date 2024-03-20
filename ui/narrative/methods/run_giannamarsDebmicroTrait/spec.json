@@ -13,7 +13,7 @@
         {
             "id": "parameter_1",
             "optional": true,
-            "advanced": false,
+            "advanced": true,
             "allow_multiple": false,
             "default_values": [ "" ],
             "field_type": "text",
@@ -32,12 +32,8 @@
             "field_type": "text",
             "text_options": {
                 "valid_ws_types": [
-                    "KBaseMetagenomes.BinnedContigs",
-                    "KBaseSets.GenomeSet",
-                    "KBaseSearch.GenomeSet",
-                    "KBaseGenomes.Genome",
-                    "KBaseSets.AssemblySet",
-                    "KBaseGenomeAnnotations.Assembly"
+                    "KBaseBiochem.Media",
+                    "KBaseMatrices.ChemicalAbundanceMatrix"
                 ]
             }
         },
@@ -54,15 +50,22 @@
                 "options": [
                     {
                         "value": "batch",
-                        "display": "batch",
+                        "display": "Batch Mode",
                         "id": "batch",
                         "ui-name": "batch - default simulation type"
                     },
                     {
                         "value": "mixed_media",
-                        "display": "mixed media",
+                        "display": "Mixed Mode",
                         "id": "mixed_media",
                         "ui-name": "mixed_media - mixed media"
+                    }
+                    ,
+                    {
+                        "value": "competition",
+                        "display": "Competition",
+                        "id": "competition",
+                        "ui-name": "competition - competition"
                     }
                 ]
             }
