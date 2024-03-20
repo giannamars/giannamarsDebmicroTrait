@@ -50,7 +50,7 @@ parameters :
            Substrate uptake:lipid transport
         short-hint : |
            Substrate uptake:lipid transport
-    Substrate uptake:nucleic acid component transport :
+    Substrate_uptake:nucleic_acid_component_transport :
         ui-name : |
            Substrate uptake:nucleic acid component transport
         short-hint : |
