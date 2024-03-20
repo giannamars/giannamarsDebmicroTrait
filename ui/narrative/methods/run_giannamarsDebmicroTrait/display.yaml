@@ -74,15 +74,9 @@ parameters :
         long-hint  : |
             simulation_type
 
-    resource_use :
-       ui-name : |
-           Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration
-       short-hint : |
-           Media specifies the set of chemical compounds an organism can use for its growth. 
-
-    batch_concentration :
+    media_concentration :
         ui-name : |
-            Batch Concentration
+            Media Concentration
         short-hint : |
             DEBmicroTrait Simulation Type
         long-hint  : |

@@ -22,7 +22,7 @@
                 "Substrate_degradation:complex_carbohydrate_depolymerization"
             ],
             "optional": false,
-            "advanced": false,
+            "advanced": true,
             "allow_multiple": false,
             "with_border": true
         }
@@ -169,19 +169,7 @@
             }
         },
         {
-            "id": "resource_use",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
-            }
-        },
-        {
-            "id": "batch_concentration",
+            "id": "media_concentration",
             "optional": false,
             "advanced": false,
             "allow_multiple": true,
@@ -202,9 +190,6 @@
                 },{
                     "narrative_system_variable": "workspace_id",
                     "target_property": "workspace_id"
-                },{
-                    "input_parameter": "resource_use",
-                    "target_property": "resource_use"
                 },
                 {
                     "input_parameter": "media_refs",
@@ -214,8 +199,8 @@
                     "input_parameter": "simulation_type",
                     "target_property": "simulation_type"
                 },{
-                    "input_parameter": "batch_concentration",
-                    "target_property": "batch_concentration"
+                    "input_parameter": "media_concentration",
+                    "target_property": "media_concentration"
                 }
             ],
             "output_mapping": [
