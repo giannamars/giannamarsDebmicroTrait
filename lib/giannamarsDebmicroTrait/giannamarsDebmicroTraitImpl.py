@@ -106,8 +106,6 @@ class giannamarsDebmicroTrait:
             raise ValueError("unable to instantiate dfuClient. "+str(e))
         
 
-    
-
         fig = pyplot.figure()
         fig.set_size_inches(1, 1)
         fig, ax = pyplot.subplots(nrows=1, ncols=1)  
@@ -126,7 +124,9 @@ class giannamarsDebmicroTrait:
         data_array = np.random.rand(3, 39)
         headers = ['Header ' + str(i) for i in range(1, 40)]  # Sample headers
 
-        html_report = h.html_add_batch_summary(params, html_output_dir)
+
+
+        html_report = h.html_add_batch_summary(params, png_file, html_output_dir)
 
         try:
             html_upload_ret = dfuClient.file_to_shock({'file_path': html_report['path'],

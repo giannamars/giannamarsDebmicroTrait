@@ -7,12 +7,11 @@ def html_header():
     return report
 
 
-def html_add_batch_summary(params, html_output_dir):
+def html_add_batch_summary(params, png_file, html_output_dir):
 
     #output_file = os.path.join(output_directory, "add_ontology_summary.html")
     html_file = 'test' + '.html'
     output_html_file_path = os.path.join(html_output_dir, html_file)
-
 
     img_dpi = 300
     img_units = "in"
@@ -53,11 +52,11 @@ def html_add_batch_summary(params, html_output_dir):
     html_report_lines.append('<div id="tabContent">')
     html_report_lines.append('<div class="tab active">')
     html_report_lines.append('<div><h2>Image 1</h2></div>')  # Header for Image 1
-   # html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, png_file))
+    html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, png_file))
     html_report_lines.append('</div>')
     html_report_lines.append('<div class="tab">')
     html_report_lines.append('<div><h2>Image 2</h2></div>')  # Header for Image 1
-    #html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, png_file))
+    html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, png_file))
     html_report_lines.append('</div>')
     html_report_lines.append('<div class="tab">')
     html_report_lines.append('<div><h2>Background</h2></div>') 
