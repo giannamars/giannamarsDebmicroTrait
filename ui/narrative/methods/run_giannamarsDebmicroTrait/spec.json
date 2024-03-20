@@ -11,19 +11,8 @@
     },
     "parameters": [ 
         {
-            "id": "parameter_1",
+            "id": "media_refs",
             "optional": true,
-            "advanced": true,
-            "allow_multiple": false,
-            "default_values": [ "" ],
-            "field_type": "text",
-            "text_options": {
-                "valid_ws_types": [ ]
-            }
-        },
-        {
-            "id": "obj_refs",
-            "optional": false,
             "advanced": false,
             "allow_multiple": true,
             "default_values": [
@@ -35,6 +24,18 @@
                     "KBaseBiochem.Media",
                     "KBaseMatrices.ChemicalAbundanceMatrix"
                 ]
+            }
+        },
+        {
+            "id": "resource_use",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
             }
         },
         {
@@ -66,9 +67,23 @@
                         "display": "Competition",
                         "id": "competition",
                         "ui-name": "competition - competition"
+                    },
+                    {
+                        "value": "fba_media",
+                        "display": "KBase Media",
+                        "id": "fba_media",
+                        "ui-name": "fba_media - fba_media"
                     }
                 ]
             }
+        },
+        {
+            "id": "batch_concentration",
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": true,
+            "default_values": [ "" ],
+            "field_type": "text"
         }
     ],
     "behavior": {
@@ -84,8 +99,19 @@
                     "narrative_system_variable": "workspace_id",
                     "target_property": "workspace_id"
                 },{
-                    "input_parameter": "parameter_1",
-                    "target_property": "parameter_1"
+                    "input_parameter": "resource_use",
+                    "target_property": "resource_use"
+                },
+                {
+                    "input_parameter": "media_refs",
+                    "target_property": "media_refs",
+                    "target_type_transform": "list<ref>"
+                },{
+                    "input_parameter": "simulation_type",
+                    "target_property": "simulation_type"
+                },{
+                    "input_parameter": "batch_concentration",
+                    "target_property": "batch_concentration"
                 }
             ],
             "output_mapping": [
