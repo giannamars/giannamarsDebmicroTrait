@@ -27,18 +27,6 @@
             }
         },
         {
-            "id": "resource_use",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
-            }
-        },
-        {
             "id": "simulation_type",
             "optional": false,
             "advanced": false,
@@ -78,13 +66,26 @@
             }
         },
         {
+            "id": "resource_use",
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": false,
+            "default_values": [ "1" ],
+            "field_type": "checkbox",
+            "checkbox_options": {
+                "unchecked_value": 0,
+                "checked_value": 1
+            }
+        },
+        {
             "id": "batch_concentration",
             "optional": false,
-            "advanced": true,
+            "advanced": false,
             "allow_multiple": true,
-            "default_values": [ "" ],
+            "default_values": [ "1.25" ],
             "field_type": "text"
         }
+
     ],
     "behavior": {
         "service-mapping": {
