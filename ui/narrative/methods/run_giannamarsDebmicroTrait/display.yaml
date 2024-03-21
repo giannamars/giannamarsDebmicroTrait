@@ -38,42 +38,30 @@ parameters :
         long-hint  : |
             simulation_type 
 
-    Substrate_uptake:aromatic_acid_transport :
+    granularity_acquisition :
         ui-name : |
-           Substrate uptake:aromatic acid transport
+            Granularity
         short-hint : |
-           Substrate uptake:aromatic acid transport
-    Substrate_uptake:carbohydrate_transport :
-        ui-name : |
-           Substrate uptake:carbohydrate transport
-        short-hint : |
-           Substrate uptake:carbohydrate transport
-    Substrate_uptake:free_amino_acids_transport :
-        ui-name : |
-           Substrate uptake:free amino acids transport
-        short-hint : |
-           Substrate uptake:free amino acids transport
-    Substrate_uptake:lipid_transport :
-        ui-name : |
-           Substrate uptake:lipid transport
-        short-hint : |
-           Substrate uptake:lipid transport
-    Substrate_uptake:nucleic_acid_component_transport :
-        ui-name : |
-           Substrate uptake:nucleic acid component transport
-        short-hint : |
-           Substrate uptake:nucleic acid component transport
-    Substrate_uptake:secondary_metabolite_transport :
-        ui-name : |
-           Substrate uptake:secondary metabolite transport
-        short-hint : |
-           Substrate uptake:secondary metabolite transport
-    Substrate_degradation:complex_carbohydrate_depolymerization :
-        ui-name : |
-           Substrate degradation:complex carbohydrate depolymerization
-        short-hint : |
-           Substrate degradation:complex carbohydrate depolymerization
+            [1,2,3], with 1 - default (lowest) granularity
+        long-hint  : |
+            Trait Matrix granularity
 
+    granularity_use :
+        ui-name : |
+            Granularity
+        short-hint : |
+            [1,2,3], with 1 - default (lowest) granularity
+        long-hint  : |
+            Trait Matrix granularity
+
+    granularity_stress :
+        ui-name : |
+            Granularity
+        short-hint : |
+            [1,2,3], with 1 - default (lowest) granularity
+        long-hint  : |
+            Trait Matrix granularity
+ 
     simulation_type :
         ui-name : |
             Simulation Type
@@ -93,6 +81,16 @@ parameter-groups:
     acquisition_traits:
         ui-name: |
             Resource Acquisition
+        short-hint: |
+
+    resource_use_traits:
+        ui-name: |
+            Resource Use
+        short-hint: |
+
+    stress_tolerance_traits:
+        ui-name: |
+            Stress Tolerance
         short-hint: |
 
 description : |

@@ -13,106 +13,135 @@
         {
             "id": "acquisition_traits",
             "parameters": [
-                "Substrate_uptake:aromatic_acid_transport",
-                "Substrate_uptake:carbohydrate_transport",
-                "Substrate_uptake:free_amino_acids_transport",
-                "Substrate_uptake:lipid_transport",
-                "Substrate_uptake:nucleic_acid_component_transport",
-                "Substrate_uptake:secondary_metabolite_transport",
-                "Substrate_degradation:complex_carbohydrate_depolymerization"
+               "granularity_acquisition"
+            ],
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": false,
+            "with_border": true
+        },
+        {
+            "id": "resource_use_traits",
+            "parameters": [
+               "granularity_use"
+            ],
+            "optional": false,
+            "advanced": true,
+            "allow_multiple": false,
+            "with_border": true
+        },
+        {
+            "id": "stress_tolerance_traits",
+            "parameters": [
+               "granularity_stress"
             ],
             "optional": false,
             "advanced": true,
             "allow_multiple": false,
             "with_border": true
         }
+
     ],
     "parameters": [
         {
-            "id": "Substrate_uptake:aromatic_acid_transport",
+            "id": "granularity_acquisition",
             "optional": false,
             "advanced": false,
             "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
+            "default_values": [
+                "1"
+            ],
+            "field_type": "dropdown",
+            "dropdown_options": {
+                "options": [
+                    {
+                        "value": "1",
+                        "display": "1",
+                        "id": "one",
+                        "ui-name": "1 - default (lowest) granularity"
+                    },
+                    {
+                        "value": "2",
+                        "display": "2",
+                        "id": "two",
+                        "ui-name": "2 - medium granularity"
+                    }
+                    ,
+                    {
+                        "value": "3",
+                        "display": "3",
+                        "id": "3",
+                        "ui-name": "3 - highest granularity"
+                    }
+                ]
             }
         },
         {
-            "id": "Substrate_uptake:carbohydrate_transport",
+            "id": "granularity_use",
             "optional": false,
             "advanced": false,
             "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
+            "default_values": [
+                "1"
+            ],
+            "field_type": "dropdown",
+            "dropdown_options": {
+                "options": [
+                    {
+                        "value": "1",
+                        "display": "1",
+                        "id": "one",
+                        "ui-name": "1 - default (lowest) granularity"
+                    },
+                    {
+                        "value": "2",
+                        "display": "2",
+                        "id": "two",
+                        "ui-name": "2 - medium granularity"
+                    }
+                    ,
+                    {
+                        "value": "3",
+                        "display": "3",
+                        "id": "3",
+                        "ui-name": "3 - highest granularity"
+                    }
+                ]
             }
         },
         {
-            "id": "Substrate_uptake:free_amino_acids_transport",
+            "id": "granularity_stress",
             "optional": false,
             "advanced": false,
             "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
+            "default_values": [
+                "1"
+            ],
+            "field_type": "dropdown",
+            "dropdown_options": {
+                "options": [
+                    {
+                        "value": "1",
+                        "display": "1",
+                        "id": "one",
+                        "ui-name": "1 - default (lowest) granularity"
+                    },
+                    {
+                        "value": "2",
+                        "display": "2",
+                        "id": "two",
+                        "ui-name": "2 - medium granularity"
+                    }
+                    ,
+                    {
+                        "value": "3",
+                        "display": "3",
+                        "id": "3",
+                        "ui-name": "3 - highest granularity"
+                    }
+                ]
             }
         },
-        {
-            "id": "Substrate_uptake:lipid_transport",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
-            }
-        },
-        {
-            "id": "Substrate_uptake:nucleic_acid_component_transport",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
-            }
-        },
-        {
-            "id": "Substrate_uptake:secondary_metabolite_transport",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
-            }
-        },
-        {
-            "id": "Substrate_degradation:complex_carbohydrate_depolymerization",
-            "optional": false,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "1" ],
-            "field_type": "checkbox",
-            "checkbox_options": {
-                "unchecked_value": 0,
-                "checked_value": 1
-            }
-        },
-
         {
             "id": "media_refs",
             "optional": true,
