@@ -111,15 +111,22 @@ class giannamarsDebmicroTrait:
             os.makedirs(html_output_dir)
         
         # Make dummy plot
-        fig = pyplot.figure()
-        fig.set_size_inches(1, 1)
-        fig, ax = pyplot.subplots(nrows=1, ncols=1)  
-        ax.plot([0,1,2], [10,20,3])
+        #fig = pyplot.figure()
+        #fig.set_size_inches(1, 1)
+        #fig, ax = pyplot.subplots(nrows=1, ncols=1)  
+        #ax.plot([0,1,2], [10,20,3])
 
-        png_file = 'pangenome_circle.png'
-        output_png_file_path = os.path.join(html_output_dir, png_file)
-        fig.savefig(output_png_file_path, dpi=200)
+        #
+        #fig.savefig(output_png_file_path, dpi=200)
        
+        # Load pre-computed plots
+        png_file = os.path.join('/kb/module/data', 'substrate_thermodynamics_traits.png')
+        #script_path = os.path.abspath(png_path)
+        
+        #png_file = 'substrate_thermodynamic_traits.png'
+        #output_png_file_path = os.path.join(html_output_dir, 'substrate_thermodynamic_traits.png')
+        
+        
         # Generate dummy table data 
         data_array = np.random.rand(3, 39)
         headers = ['Header ' + str(i) for i in range(1, 40)]  # Sample headers
