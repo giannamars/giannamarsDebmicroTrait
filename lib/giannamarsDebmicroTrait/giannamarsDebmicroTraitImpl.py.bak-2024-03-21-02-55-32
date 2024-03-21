@@ -4,7 +4,6 @@ import logging
 import os
 import sys
 import uuid
-import shutil
 
 import matplotlib.pyplot as pyplot
 #import seaborn as sns
@@ -39,7 +38,7 @@ class giannamarsDebmicroTrait:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/giannamars/giannamarsDebmicroTrait.git"
-    GIT_COMMIT_HASH = "cd114d2af61f942932d2ada6157776fe8557ecc7"
+    GIT_COMMIT_HASH = "ddf453820cde2b7ab6351130a86824c5dd77dc5c"
 
     #BEGIN_CLASS_HEADER
     def now_ISO(self):
@@ -121,10 +120,12 @@ class giannamarsDebmicroTrait:
         #fig.savefig(output_png_file_path, dpi=200)
        
         # Load pre-computed plots
-        png_file_path = os.path.join('/kb/module/data', 'substrate_thermodynamics_traits_plot.png')
-        png_file = 'substrate_thermodynamics_traits_plot.png'
-        output_png_file_path = os.path.join(html_output_dir, 'substrate_thermodynamic_traits.png')
-        shutil.copyfile(png_file_path, output_png_file_path)
+        png_file = os.path.join('/kb/module/data', 'substrate_thermodynamics_traits_plot.png')
+        output_png_file_path = os.path.abspath(png_file)
+        
+        #png_file = 'substrate_thermodynamic_traits.png'
+        #output_png_file_path = os.path.join(html_output_dir, 'substrate_thermodynamic_traits.png')
+        
         
         # Generate dummy table data 
         data_array = np.random.rand(3, 39)
