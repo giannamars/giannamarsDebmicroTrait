@@ -5,9 +5,6 @@ import os
 import sys
 import uuid
 
-import matplotlib.pyplot as pyplot
-import seaborn as sns
-import pandas as pd
 import numpy as np
 #from sklearn.preprocessing import StandardScaler
 #from sklearn.decomposition import PCA
@@ -112,51 +109,14 @@ class giannamarsDebmicroTrait:
         
         # Load precomputed data
         substrate_thermodynamics_data = os.path.join('/kb/module/data', 'substrate_thermodynamic_traits.csv')
-        df_thermo = pd.read_csv(substrate_thermodynamics_data)
-        #
-        img_dpi = 300
-        img_units = "in"
-        img_pix_width = 1200
-        img_in_width = round(float(img_pix_width) / float(img_dpi), 1)
-        img_html_width = img_pix_width // 2
-        # Get unique ontologies from the dataframe
-        unique_ontologies = df_thermo['ontology'].unique()
-        num_colors = len(unique_ontologies)
-        # Choose a qualitative color palette with the desired number of colors
-        palette = sns.color_palette("colorblind", n_colors=num_colors)
-        # Set the figure size before creating subplots
-        fig = pyplot.figure(figsize=(img_in_width*1.618, img_in_width))
-
-        # Create subplots
-        ax = fig.subplots(nrows=1, ncols=1)
-
-        # Plot the seaborn histplot on the specified axis with the chosen color palette
-        sns.histplot(data=df_thermo, x="delGcox", hue="ontology", multiple="stack", bins=30,
-                    palette=palette,
-                    ax=ax)
-
-        ax.set_xlabel(r'Estimated available Gibbs free energy $\Delta G_{\mathrm{cox}}$ (kJ/mol)')
-
-        # Add a legend with labels and set font size
-        legend = ax.legend(unique_ontologies, title="Chemical Class", fontsize=10)
-        # Set the title font size
-        legend.get_title().set_fontsize('10')
-
-        # Close the figure to free up memory (optional)
-        pyplot.close(fig)
-   
-        png_file = 'substrate_thermodynamic_traits_plot.png'
-        output_png_file_path = os.path.join(html_output_dir, png_file)
-        fig.savefig(output_png_file_path, dpi=200)
-
-        pyplot.close(fig)
+        substrate_thermodynamics = h.plot_substrate_thermodynamic_traits(params, substrate_thermodynamics_data, html_output_dir)
        
         # Generate dummy table data 
         data_array = np.random.rand(3, 39)
         headers = ['Header ' + str(i) for i in range(1, 40)]  # Sample headers
 
         api_results = {
-            "png1": png_file,
+            "png1": substrate_thermodynamics['name'],
             "header": headers,
             "data": data_array
         }
@@ -172,7 +132,7 @@ class giannamarsDebmicroTrait:
             raise ValueError('error uploading html file to shock')
         
         try:
-            png_upload_ret = dfuClient.file_to_shock({'file_path': output_png_file_path,
+            png_upload_ret = dfuClient.file_to_shock({'file_path': substrate_thermodynamics['path'],
                                                 'make_handle': 0})
         except:
             raise ValueError('error uploading png file to shock')
