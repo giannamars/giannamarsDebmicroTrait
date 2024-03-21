@@ -155,6 +155,7 @@ def plot_substrate_thermodynamic_traits(params, data_path, html_output_dir):
 
 def plot_substrate_kinetic_traits(params, data_path, html_output_dir):
         df_kinetics = pd.read_csv(data_path)
+        df_kinetics = df_kinetics[df_kinetics.Vmax > 1e-8]
        #
         img_dpi = 300
         img_units = "in"
@@ -196,20 +197,20 @@ def plot_substrate_kinetic_traits(params, data_path, html_output_dir):
                         'cbar_ax_bbox': [1, 0.42, 0.04, 0.3],
                     }
 
-        _ = sp.sign_plot(post_hoc_vmax, **heatmap_args)
+        #sp.sign_plot(post_hoc_vmax, labels=False)
 
-        ax1.set_title('Significance plot', fontsize=10)
-        ax1.set_yticklabels(ax0.get_xticklabels(), rotation=0, fontsize=10)
-        ax1.set_xticklabels(ax0.get_xticklabels(), rotation=90, fontsize=10)
+        #ax1.set_title('Significance plot', fontsize=10)
+        #ax1.set_yticklabels(ax0.get_xticklabels(), rotation=0, fontsize=10)
+        #ax1.set_xticklabels(ax0.get_xticklabels(), rotation=90, fontsize=10)
 
         # Create subplots
         ax2 = pyplot.subplot(gs[2])
 
         sns.boxplot(x='Ontology', y='KD', data=df_kinetics, showfliers=False, width=0.5, ax=ax2)
         ax2.set_yscale("log")
-        ax2.set_xticklabels(ax2.get_xticklabels(),rotation=30)
-        ax2.set_xlabel("")
-        ax2.set_ylabel(r"Half-saturation constant $K_{\mathrm{0}}$ (mM)")
+        #ax2.set_xticklabels(ax2.get_xticklabels(),rotation=30)
+        #ax2.set_xlabel("")
+        #ax2.set_ylabel(r"Half-saturation constant $K_{\mathrm{0}}$ (mM)")
 
         ax3 = pyplot.subplot(gs[3])
 
@@ -221,11 +222,11 @@ def plot_substrate_kinetic_traits(params, data_path, html_output_dir):
                         'cbar_ax_bbox': [1, 0.42, 0.04, 0.3],
                     }
 
-        _ = sp.sign_plot(post_hoc_kd, **heatmap_args)
+        #sp.sign_plot(post_hoc_kd, labels=False)
 
-        ax3.set_title('Significance plot', fontsize=10)
-        ax3.set_yticklabels(ax3.get_xticklabels(), rotation=0, fontsize=10)
-        ax3.set_xticklabels(ax3.get_xticklabels(), rotation=90, fontsize=10)
+        #ax3.set_title('Significance plot', fontsize=10)
+        #ax3.set_yticklabels(ax3.get_xticklabels(), rotation=0, fontsize=10)
+        #ax3.set_xticklabels(ax3.get_xticklabels(), rotation=90, fontsize=10)
         pyplot.tight_layout()
         
         png_file = 'substrate_kinetic_traits_plot.png'
