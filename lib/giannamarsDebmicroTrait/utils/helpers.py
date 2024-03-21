@@ -1,7 +1,9 @@
 import os
 import matplotlib.pyplot as pyplot
+from matplotlib import gridspec
 import seaborn as sns
 import pandas as pd
+import scikit_posthocs as sp
 
 def html_add_batch_summary(params, api_results, html_output_dir):
 
@@ -52,11 +54,11 @@ def html_add_batch_summary(params, api_results, html_output_dir):
     html_report_lines.append('<div id="tabContent">')
     html_report_lines.append('<div class="tab active">')
     html_report_lines.append('<div><h2>Image 1</h2></div>')  # Header for Image 1
-    html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, api_results["png1"]))
+    html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, api_results["png"][0]))
     html_report_lines.append('</div>')
     html_report_lines.append('<div class="tab">')
     html_report_lines.append('<div><h2>Image 2</h2></div>')  # Header for Image 1
-    html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, api_results["png1"]))
+    html_report_lines.append('<img width="{0}" src="{1}">'.format(img_html_width, api_results["png"][1]))
     html_report_lines.append('</div>')
     html_report_lines.append('<div class="tab">')
     html_report_lines.append('<div><h2>Background</h2></div>') 
@@ -139,9 +141,6 @@ def plot_substrate_thermodynamic_traits(params, data_path, html_output_dir):
         legend = ax.legend(unique_ontologies, title="Chemical Class", fontsize=10)
         # Set the title font size
         legend.get_title().set_fontsize('10')
-
-        # Close the figure to free up memory (optional)
-        pyplot.close(fig)
    
         png_file = 'substrate_thermodynamic_traits_plot.png'
         output_png_file_path = os.path.join(html_output_dir, png_file)
@@ -152,3 +151,89 @@ def plot_substrate_thermodynamic_traits(params, data_path, html_output_dir):
         return {'path': output_png_file_path,
                 'name': png_file,
                 'description': 'Plots for Substrate Thermodynamic Traits'}
+
+
+def plot_substrate_kinetic_traits(params, data_path, html_output_dir):
+        df_kinetics = pd.read_csv(data_path)
+       #
+        img_dpi = 300
+        img_units = "in"
+        img_pix_width = 1200
+        img_in_width = round(float(img_pix_width) / float(img_dpi), 1)
+        img_html_width = img_pix_width // 2
+        #
+        post_hoc_vmax = sp.posthoc_conover(df_kinetics, val_col='Vmax', group_col='Ontology', \
+                              p_adjust = 'holm')
+        post_hoc_kd = sp.posthoc_conover(df_kinetics, val_col='KD', group_col='Ontology', \
+                              p_adjust = 'holm')
+        # Get unique ontologies from the dataframe
+        unique_ontologies = df_kinetics['Ontology'].unique()
+        num_colors = len(unique_ontologies)
+
+        # Choose a qualitative color palette with the desired number of colors
+        palette = sns.color_palette("colorblind", n_colors=num_colors)
+
+        # Set the figure size before creating subplots
+        fig = pyplot.figure(figsize=(img_in_width*1.618, img_in_width*1.1*2))
+        gs  = gridspec.GridSpec(2, 2, width_ratios=[3, 1])
+
+        # Create subplots
+        ax0 = pyplot.subplot(gs[0])
+
+        sns.boxplot(x='Ontology', y='Vmax', data=df_kinetics, showfliers=False, width=0.5, ax=ax0)
+        ax0.set_yscale("log")
+        ax0.set_xticklabels(ax0.get_xticklabels(),rotation=30)
+        ax0.set_xlabel("")
+        ax0.set_ylabel(r"Maximum specific uptake rate $V_{\mathrm{max}}$ (1/h)")
+
+        ax1 = pyplot.subplot(gs[1])
+
+        heatmap_args = {'cmap': ['1', '#fb6a4a',  '#08306b',  '#4292c6', '#c6dbef'], 
+                        'linewidths': 0.25, 
+                        'linecolor': '0.5', 
+                        'clip_on': False, 
+                        'square': True, 
+                        'cbar_ax_bbox': [1, 0.42, 0.04, 0.3],
+                    }
+
+        _ = sp.sign_plot(post_hoc_vmax, **heatmap_args)
+
+        ax1.set_title('Significance plot', fontsize=10)
+        ax1.set_yticklabels(ax0.get_xticklabels(), rotation=0, fontsize=10)
+        ax1.set_xticklabels(ax0.get_xticklabels(), rotation=90, fontsize=10)
+
+        # Create subplots
+        ax2 = pyplot.subplot(gs[2])
+
+        sns.boxplot(x='Ontology', y='KD', data=df_kinetics, showfliers=False, width=0.5, ax=ax2)
+        ax2.set_yscale("log")
+        ax2.set_xticklabels(ax2.get_xticklabels(),rotation=30)
+        ax2.set_xlabel("")
+        ax2.set_ylabel(r"Half-saturation constant $K_{\mathrm{0}}$ (mM)")
+
+        ax3 = pyplot.subplot(gs[3])
+
+        heatmap_args = {'cmap': ['1', '#fb6a4a',  '#08306b',  '#4292c6', '#c6dbef'], 
+                        'linewidths': 0.25, 
+                        'linecolor': '0.5', 
+                        'clip_on': False, 
+                        'square': True, 
+                        'cbar_ax_bbox': [1, 0.42, 0.04, 0.3],
+                    }
+
+        _ = sp.sign_plot(post_hoc_kd, **heatmap_args)
+
+        ax3.set_title('Significance plot', fontsize=10)
+        ax3.set_yticklabels(ax3.get_xticklabels(), rotation=0, fontsize=10)
+        ax3.set_xticklabels(ax3.get_xticklabels(), rotation=90, fontsize=10)
+        pyplot.tight_layout()
+        
+        png_file = 'substrate_kinetic_traits_plot.png'
+        output_png_file_path = os.path.join(html_output_dir, png_file)
+        fig.savefig(output_png_file_path, dpi=200)
+
+        pyplot.close(fig)
+
+        return {'path': output_png_file_path,
+                'name': png_file,
+                'description': 'Plots for Substrate Kinetic Traits'}

@@ -12,7 +12,7 @@ RUN pip install --upgrade pip
 RUN pip install matplotlib \
     && pip install pandas \
     && pip install seaborn \
-    && pip install scikit-learn
+    && pip install scikit-posthocs
 
 RUN curl --location https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.7-linux-x86_64.tar.gz  > julia-1.6.7-linux-x86_64.tar.gz && \
     tar zxvf julia-1.6.7-linux-x86_64.tar.gz && \
