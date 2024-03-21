@@ -80,17 +80,17 @@ parameters :
 parameter-groups:
     acquisition_traits:
         ui-name: |
-            Resource Acquisition
+            Resource Acquisition Traits
         short-hint: |
 
     resource_use_traits:
         ui-name: |
-            Resource Use
+            Resource Use Traits
         short-hint: |
 
     stress_tolerance_traits:
         ui-name: |
-            Stress Tolerance
+            Stress Tolerance Traits
         short-hint: |
 
 description : |
